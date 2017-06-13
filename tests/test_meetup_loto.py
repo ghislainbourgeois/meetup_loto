@@ -28,4 +28,5 @@ class TestMeetupLoto(unittest.TestCase):
 
 class FakeApi:
     def get_rsvps(self, meetup_name, event_id):
-        return [{'member': {'id': 1}}, {'member': {'id': 2}}, {'member': {'id': 3}}, {'member': {'id': 4}}, {'member': {'id': 5}}, {'member': {'id': 6}}, {'member': {'id': 7}}, {'member': {'id': 8}}, {'member': {'id': 9}}, {'member': {'id': 10}}]
+        return [{'member': {'id':n}} for n in range(1, 11)]
+
