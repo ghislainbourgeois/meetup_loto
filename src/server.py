@@ -5,7 +5,7 @@ from meetup_api import MeetupApi
 from meetup_loto import Loto
 
 app = Flask(__name__)
-api = MeetupApi()
+app.config.update(dict(api=MeetupApi()))
 
 cache = {}
 
@@ -24,15 +24,15 @@ def query():
             cache[session['id']] = dict()
             cache[session['id']]['meetup_name'] = meetup_name
             cache[session['id']]['event_id'] = event_id
-            cache[session['id']]['loto'] = Loto(api, meetup_name, event_id)
+            cache[session['id']]['loto'] = Loto(app.config['api'], meetup_name, event_id)
+            return redirect(url_for('details'))
         else:
             error = "Invalid characters"
-    return redirect(url_for('details'))
+            return render_template('details.html', error=error)
 
 @app.route('/details')
 def details():
     loto = cache[session['id']]['loto']
-    print(loto)
     return "Number of participants: %d" % loto.number_of_participants()
 
 app.secret_key = os.urandom(24)

@@ -1,6 +1,7 @@
 import tests.context
 import unittest
 
+from tests.api_mock import FakeApi
 from meetup_loto import Loto
 
 class TestMeetupLoto(unittest.TestCase):
@@ -25,8 +26,4 @@ class TestMeetupLoto(unittest.TestCase):
             winners.append(winner)
         self.assertEquals(0, winners[-1])
 
-
-class FakeApi:
-    def get_rsvps(self, meetup_name, event_id):
-        return [{'member': {'id':n}} for n in range(1, 11)]
 
