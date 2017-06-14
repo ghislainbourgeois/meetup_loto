@@ -7,4 +7,4 @@ python:
 install: "pip install -r requirements.txt"
 script: nose2 --with-coverage --coverage-report term-missing
 after_success:
-  - coveralls
+  - coveralls -i
