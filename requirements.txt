@@ -1,5 +1,6 @@
 coverage
+flask
 nose2
 nose2-cov
-requests
 python-coveralls
+requests
