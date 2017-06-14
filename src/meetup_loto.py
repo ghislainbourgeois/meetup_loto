@@ -12,7 +12,7 @@ class Loto:
         return len(self.participants)
 
     def current_chances(self):
-        return 1 / self.number_of_participants()
+        return (1.0 / self.number_of_participants()) * 100.0
 
     def draw(self):
         if (self.number_of_participants() > 0):

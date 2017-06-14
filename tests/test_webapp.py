@@ -25,6 +25,7 @@ class WebMeetupLotoTestCase(unittest.TestCase):
     def test_valid_meetup(self):
         result = self._post_meetup_details("Docker-Montreal", 240672864)
         assert b'Number of participants: 10' in result.data
+        assert b'Winning chances: 10.0%' in result.data
 
     def _post_meetup_details(self, m, e):
         return self.app.post('/query', data=dict(

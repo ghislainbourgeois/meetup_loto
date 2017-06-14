@@ -33,6 +33,6 @@ def query():
 @app.route('/details')
 def details():
     loto = cache[session['id']]['loto']
-    return "Number of participants: %d" % loto.number_of_participants()
+    return render_template('details.html', participants=loto.number_of_participants(), chances=loto.current_chances())
 
 app.secret_key = os.urandom(24)

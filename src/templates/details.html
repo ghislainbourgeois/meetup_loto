@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
-	{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+	{% if error %}
+        <p class=error><strong>Error:</strong> {{ error }}
+    {% else %}
+        <h2>Number of participants: {{ participants }}</h2>
+        <h2>Winning chances: {{ chances|round(2) }}%</h2>
+    {% endif %}
 {% endblock %}

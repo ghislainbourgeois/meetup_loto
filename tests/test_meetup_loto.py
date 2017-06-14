@@ -12,7 +12,7 @@ class TestMeetupLoto(unittest.TestCase):
     def test_meetup_loto_participants(self):
         nb_participants = self.loto.number_of_participants()
         self.assertEquals(10, nb_participants)
-        self.assertEquals(0.1, self.loto.current_chances())
+        self.assertEquals(10.0, self.loto.current_chances())
 
     def test_meetup_loto_winner(self):
         winner = self.loto.draw()
