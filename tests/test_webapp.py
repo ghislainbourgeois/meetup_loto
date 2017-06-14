@@ -26,6 +26,11 @@ class WebMeetupLotoTestCase(unittest.TestCase):
         result = self._post_meetup_details("Docker-Montreal", 240672864)
         assert b'Number of participants: 10' in result.data
         assert b'Winning chances: 10.0%' in result.data
+        assert b'Draw a Winner!' in result.data
+
+    def test_draw_winner(self):
+        result = self.app.get('/draw')
+        assert b'Winner is...' in result.data
 
     def _post_meetup_details(self, m, e):
         return self.app.post('/query', data=dict(

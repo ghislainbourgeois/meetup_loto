@@ -35,4 +35,7 @@ def details():
     loto = cache[session['id']]['loto']
     return render_template('details.html', participants=loto.number_of_participants(), chances=loto.current_chances())
 
+@app.route('/draw')
+def draw():
+    return "Winner is..."
 app.secret_key = os.urandom(24)
