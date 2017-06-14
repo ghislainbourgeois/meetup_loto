@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+	{% if error %}
+        <p class=error>{{ error }}
+    {% else %}
+        <h2>Winner is... <b>{{ winner }}</b></h2>
+        <a href='/draw'>Draw another!</a>
+    {% endif %}
+{% endblock %}

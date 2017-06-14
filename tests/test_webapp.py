@@ -1,3 +1,4 @@
+import re
 import tests.context
 import unittest
 import server
@@ -29,8 +30,27 @@ class WebMeetupLotoTestCase(unittest.TestCase):
         assert b'Draw a Winner!' in result.data
 
     def test_draw_winner(self):
+        self._post_meetup_details("Docker-Montreal", 240672864)
         result = self.app.get('/draw')
         assert b'Winner is...' in result.data
+        assert b"<a href='/draw'>Draw another!</a>" in result.data
+        self._assert_valid_draw(result)
+
+    def test_draw_all(self):
+        self._post_meetup_details("Docker-Montreal", 240672864)
+        self._draw_all()
+        result = self.app.get('/draw')
+        assert b'Sorry, there are no more participants to draw from' in result.data
+
+    def _draw_all(self):
+        for i in range(10):
+            result = self.app.get('/draw')
+            self._assert_valid_draw(result)
+
+    def _assert_valid_draw(self, result):
+        match = re.search('<b>([0-9]*)</b>', result.data.decode('utf-8'))
+        assert match
+        assert int(match.group(1)) in range(1, 11)
 
     def _post_meetup_details(self, m, e):
         return self.app.post('/query', data=dict(
