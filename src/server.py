@@ -34,8 +34,11 @@ def details():
 @app.route('/draw')
 def draw():
     loto = _get_loto()
-    winner = loto.draw()
-    if winner != 0:
+    winner = dict()
+    winner['id'] = loto.draw()
+    if winner['id'] != 0:
+        winner['name'] = loto.get_member_name(winner['id'])
+        winner['photo'] = loto.get_member_photo_url(winner['id'])
         return render_template('draw.html', winner=winner)
     else:
         return render_template('draw.html', error="Sorry, there are no more participants to draw from")

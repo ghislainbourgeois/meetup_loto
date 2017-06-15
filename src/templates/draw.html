@@ -3,7 +3,12 @@
 	{% if error %}
         <p class=error>{{ error }}
     {% else %}
-        <h2>Winner is... <b>{{ winner }}</b></h2>
-        <a href='/draw'>Draw another!</a>
+        <center>
+        <h2>Winner is... </h2>
+        <b>Winner's Name: {{ winner.name }}</b><br/>
+        <img height=500 width=500 src="{{ winner.photo }}" /><br/>
+        <b>Winner ID: {{ winner.id }}</b><br/>
+        <a href='/draw'>Draw another!</a><br/>
+        </center>
     {% endif %}
 {% endblock %}

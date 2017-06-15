@@ -22,6 +22,12 @@ class Loto:
         else:
             return 0
 
+    def get_member_name(self, member_id):
+        return self.api.get_member_name(self.meetup_name, member_id)
+
+    def get_member_photo_url(self, member_id):
+        return self.api.get_member_photo_url(self.meetup_name, member_id)
+
     def _get_participants_member_ids(self):
         rsvps = self.api.get_rsvps(self.meetup_name, self.event_id)
         return [rsvp['member']['id'] for rsvp in rsvps]

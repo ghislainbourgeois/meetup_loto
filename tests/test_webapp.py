@@ -33,6 +33,8 @@ class WebMeetupLotoTestCase(unittest.TestCase):
         self._post_meetup_details("Docker-Montreal", 240672864)
         result = self.app.get('/draw')
         assert b'Winner is...' in result.data
+        assert b"<b>Winner's Name: John Doe</b>" in result.data
+        assert b'<img height=500 width=500 src="https://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png" />' in result.data
         assert b"<a href='/draw'>Draw another!</a>" in result.data
         self._assert_valid_draw(result)
 
@@ -48,7 +50,7 @@ class WebMeetupLotoTestCase(unittest.TestCase):
             self._assert_valid_draw(result)
 
     def _assert_valid_draw(self, result):
-        match = re.search('<b>([0-9]*)</b>', result.data.decode('utf-8'))
+        match = re.search('<b>Winner ID: ([0-9]*)</b>', result.data.decode('utf-8'))
         assert match
         assert int(match.group(1)) in range(1, 11)
 
