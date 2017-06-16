@@ -1,0 +1,6 @@
+coverage
+flask
+nose2
+nose2-cov
+python-coveralls
+requests
