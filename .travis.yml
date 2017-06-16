@@ -12,3 +12,6 @@ before_install:
   - sudo apt-get -y install docker-ce
 script:
   - docker build --build-arg TRAVIS_JOB_ID=${TRAVIS_JOB_ID} -t ghibourg/meetup_loto .
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push ghibourg/meetup_loto
