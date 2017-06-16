@@ -11,4 +11,5 @@ FROM python:3.6-alpine
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY --from=tester /meetup_loto/src /src
-CMD "export FLASK_APP=/src/server.py; flask run"
+EXPOSE 5000
+CMD "FLASK_APP=/src/server.py flask run"
