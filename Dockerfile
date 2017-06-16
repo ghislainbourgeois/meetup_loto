@@ -12,4 +12,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY --from=tester /meetup_loto/src /src
 EXPOSE 5000
-ENTRYPOINT exec FLASK_APP=/src/server.py flask run
+ENTRYPOINT FLASK_APP=/src/server.py flask run
