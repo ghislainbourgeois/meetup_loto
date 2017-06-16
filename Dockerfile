@@ -5,6 +5,8 @@ COPY test-requirements.txt .
 RUN pip install -r test-requirements.txt
 COPY ./ ./
 RUN nose2 --with-coverage --coverage-report term-missing
+RUN env
+RUN ls -la
 RUN coveralls -i
 
 FROM python:3.6-alpine
