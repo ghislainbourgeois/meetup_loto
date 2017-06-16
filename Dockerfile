@@ -1,6 +1,4 @@
 FROM python:3.6 as tester
-ENV TRAVIS=${TRAVIS}
-ENV TRAVIS_JOB_ID=${TRAVIS_JOB_ID}
 WORKDIR /meetup_loto
 COPY test-requirements.txt .
 RUN pip install -r test-requirements.txt
