@@ -10,4 +10,4 @@ before_install:
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) edge"
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
-  - docker build -t ghibourg/meetup_loto .
+  - docker build -e TRAVIS=$TRAVIS -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID -t ghibourg/meetup_loto .
