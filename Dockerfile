@@ -9,7 +9,10 @@ RUN coveralls -i
 
 FROM python:3.6-alpine
 COPY requirements.txt .
+COPY --from=tester /root/.cache/ /root/.cache/
 RUN pip install -r requirements.txt
 COPY --from=tester /meetup_loto/src /src
-EXPOSE 5000
-ENTRYPOINT FLASK_APP=/src/server.py flask run
+WORKDIR /src
+ENV PYTHONPATH "/src:/usr/local/lib/python3.6"
+EXPOSE 8080
+ENTRYPOINT twistd -n web --wsgi server.app
