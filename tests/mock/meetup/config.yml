@@ -1,0 +1,30 @@
+---
+- path: '/Docker-Montreal/events/240672864/rsvps'
+  status: 200
+  headers:
+      'Content-Type': 'application/json'
+  body: '/config/test-meetup-rsvps.json'
+
+- path: '/Docker-Montreal/members/20000001'
+  status: 200
+  headers:
+      'Content-Type': 'application/json'
+  body: '/config/member1.json'
+
+- path: '/Docker-Montreal/members/20000002'
+  status: 200
+  headers:
+      'Content-Type': 'application/json'
+  body: '/config/member2.json'
+
+- path: '/Docker-Montreal/members/20000003'
+  status: 200
+  headers:
+      'Content-Type': 'application/json'
+  body: '/config/member3.json'
+
+- path: '/Docker-Montreal/members/20000004'
+  status: 200
+  headers:
+      'Content-Type': 'application/json'
+  body: '/config/member4.json'

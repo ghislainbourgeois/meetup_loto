@@ -4,6 +4,8 @@ WORKDIR /meetup_loto
 COPY test-requirements.txt .
 RUN pip install -r test-requirements.txt
 COPY ./ ./
+ENV REQUESTS_CA_BUNDLE ""
+ENV CURL_CA_BUNDLE ""
 RUN nose2 --with-coverage --coverage-report term-missing
 RUN coveralls -i
 
