@@ -9,7 +9,7 @@ services:
     ports:
       - "8888:8080"
     environment:
-      - env=local
+      - env=mock
   api.meetup.com:
     image: campanda/webserver-mock
     ports:
