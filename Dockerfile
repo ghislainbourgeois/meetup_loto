@@ -11,7 +11,7 @@ RUN nose2 --with-coverage --coverage-report term-missing
 FROM python:3.6-alpine
 COPY requirements.txt .
 COPY --from=tester /root/.cache/ /root/.cache/
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && rm -Rf /root/.cache
 COPY --from=tester /meetup_loto/src /src
 COPY --from=tester /meetup_loto/entrypoint.sh /src
 WORKDIR /src
