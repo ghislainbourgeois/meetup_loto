@@ -7,7 +7,7 @@ COPY ./ ./
 ENV REQUESTS_CA_BUNDLE ""
 ENV CURL_CA_BUNDLE ""
 RUN nose2 --with-coverage --coverage-report term-missing
-RUN test $TRAVIS_JOB_ID && coveralls -i
+RUN test $TRAVIS_JOB_ID && coveralls -i || echo
 
 FROM python:3.6-alpine
 COPY requirements.txt .
