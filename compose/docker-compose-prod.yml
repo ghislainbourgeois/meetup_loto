@@ -1,0 +1,10 @@
+version: '2'
+services:
+  meetup_loto:
+    image: ghibourg/meetup_loto
+    networks:
+      - meetup_loto_net
+    ports:
+      - "8888:8080"
+    environment:
+      - env=prod

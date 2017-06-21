@@ -1,0 +1,26 @@
+version: '3'
+services:
+  meetup_loto:
+    image: ghibourg/meetup_loto
+    depends_on:
+      - api.meetup.com
+    networks:
+      - meetup_loto_net
+    ports:
+      - "8888:8080"
+    environment:
+      - env=mock
+  api.meetup.com:
+    image: campanda/webserver-mock
+    ports:
+      - "443:443"
+    environment:
+       - ssl=true
+       - custom_responses_config=/config/config.yml
+    volumes:
+       - ./tests/mock/meetup:/config
+    networks:
+      - meetup_loto_net
+
+networks:
+  meetup_loto_net:
