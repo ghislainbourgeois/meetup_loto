@@ -57,3 +57,6 @@ def _setup_session(meetup_name, event_id):
             cache[session['id']]['loto'] = Loto(app.config['api'], meetup_name, event_id)
 
 app.secret_key = os.urandom(24)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=os.getenv("PORT"))
